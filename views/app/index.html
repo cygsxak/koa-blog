@@ -11,7 +11,25 @@
 		<div>{{post.content}}</div>
 	</section>
 	{% endfor %}
+	
+	
+	
 </main>
+
+<ul class="pagination" id="pagination"></ul>
+
+<script>
+	$(".pagination").createPage({
+		pageCount:Math.ceil({{num}}/{{page_size}}),
+		current:1,
+		backFn:function(p){
+			//console.log(p);
+			$(".home").load("./?page="+p+" .home");
+			history.pushState({}, "文章管理", "./?page="+p);
+		}
+	});
+</script>
+
 <aside>
 	<h2>热门文章</h2>
 	<ul>

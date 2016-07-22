@@ -1,11 +1,16 @@
 var models=require('../../models/models.js');
+var config = require('../../config/config.js');
 
 module.exports={
 	home:function *(next) {
 		try {
-			var posts= yield models.Article.find({});
+			var page = this.query.page;
+			var posts= yield models.Article.find({}).limit(config.page_size).skip((page-1)*config.page_size);
+			var num= yield models.Article.count({});
 			yield this.render('admin/admin.html',{
 				posts:posts,
+				num:num,
+				page_size:config.page_size,
 				title:'文章管理',
 				username:this.session.username
 			});

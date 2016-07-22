@@ -44,3 +44,17 @@ aside{
 footer{
 	clear: both;
 }
+
+input{
+	margin: 20px 0;
+    width: 90%;
+}
+
+textarea{
+	height: 100px;
+    width: 90%;
+}
+
+#edui1{
+	width: 90% !important;
+}

@@ -19,4 +19,6 @@ module.exports=function (router) {
 	router.get('/admin/create',create.show);
 
 	router.post('/admin/handleCreate',create.handleCreate);
+	
+	router.post('/admin/handleEdit',create.handleEdit);
 }

@@ -21,5 +21,6 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+	page_size:5,
 };

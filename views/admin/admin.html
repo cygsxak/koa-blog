@@ -24,4 +24,16 @@
 	</tr>
 	{% endfor %}
 </table>
+<ul class="pagination" id="pagination"></ul>
+<script>
+	$(".pagination").createPage({
+		pageCount:Math.ceil({{num}}/{{page_size}}),
+		current:1,
+		backFn:function(p){
+			//console.log(p);
+			$(".table").load("/admin?page="+p+" tbody");
+			history.pushState({}, "文章管理", "/admin?page="+p);
+		}
+	});
+</script>
 {% endblock %}

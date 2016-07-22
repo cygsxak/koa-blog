@@ -22,7 +22,21 @@ module.exports={
 			this.body='保存失败';
 			console.log(e);
 		}
-		
-
+	},
+	handleEdit:function *(next) {
+		var doc={
+			title:this.request.body.title,
+			content:this.request.body.content,
+			time:new Date()
+		};
+		var id = this.request.body.id;
+		try {
+			yield models.Article.update({_id:id},doc);
+			this.status=303;
+			this.redirect('/admin');
+		} catch(e) {
+			this.body='保存失败';
+			console.log(e);
+		}
 	}
 }
